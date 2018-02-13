@@ -1,22 +1,24 @@
-const $form = $('#search-form');
-const $searchField = $('#search-keyword');
-const $responseContainer = $('#response-container');
+const form = document.getElementById('search-form');
+const searchField = document.getElementById('search-keyword');
+const responseContainer = document.getElementById('response-container');
 
 let searchForText = null;
 
-const addNews = data => {
+const addNews = function() {
+  const data = JSON.parse(this.responseText);
+
   console.log(data);
 
   const article = data.response.docs[0];
   const title = article.headline.main;
   const snippet = article.snippet;
 
-  let $li = $('<li>');
+  let li = document.createElement('li');
 
-  $li.addClass('articleClass');
-  $li.text(snippet);
+  li.className = 'articleClass';
+  li.innerText = snippet;
 
-  $responseContainer.append($li);
+  responseContainer.appendChild(li);
 }
 
 const handleError = () => {
@@ -26,19 +28,21 @@ const handleError = () => {
 const getNews = () => {
   const articleRequest = new XMLHttpRequest();
 
-  $.ajax({ url: `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${ searchForText }&api-key=15c0308eb388472089bea2e37e7b0cbc` })
-    .done(addNews)
-    .fail(handleError);
+  articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${ searchForText }&api-key=15c0308eb388472089bea2e37e7b0cbc`);
+  articleRequest.onload = addNews;
+  articleRequest.onerror = handleError;
+  console.log(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${ searchForText }&api-key=15c0308eb388472089bea2e37e7b0cbc`);
+  articleRequest.send();
 }
 
 const search = event => {
   event.preventDefault();
 
-  $responseContainer.text('');
-  searchForText = $searchField.value;
+  responseContainer.innerText = '';
+  searchForText = searchField.value;
 
   getNews();
 }
 
-$form.on('submit', search);
-$searchField.focus();
+form.addEventListener('submit', search);
+searchField.focus();
