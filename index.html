@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>API times</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+  <header class="masthead">
+    <h1>Qué te interesa hoy?</h1>
+    <div class="site-container">
+      <form id="search-form">
+        <label for="search-keyword" class="visuallyhidden">Qué buscamos?</label>
+        <input id="search-keyword" type="text" name="search-keyword" placeholder="e.g. Android" required>
+        <input id="submit-btn" type="submit" value="submit">
+      </form>
+    </div>
+  </header>
+  <div class="site-container">
+    <ul id="response-container"></ul>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

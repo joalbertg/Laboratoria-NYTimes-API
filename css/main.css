@@ -1,0 +1,51 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.masthead {
+  display: block;
+  color: black;
+  background-color: rgb(251, 192, 0);
+  text-align: center;
+}
+
+.masthead > h1 {
+  padding: 10px 10px 0;
+}
+
+.visuallyhidden {
+  visibility: hidden;
+}
+
+#search-keyword {
+  width: 50%;
+  padding: 10px;
+  margin: 20px;
+}
+
+#submit-btn {
+  padding: 10px;
+  border: 0;
+  background-color: rgb(74, 119, 245);
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.site-container {
+  text-align: center;
+  padding: 10px;
+}
+
+.articleClass {
+  width: 80%;
+  border: 1px solid black;
+  display: inline-block;
+  padding: 10px;
+  margin: 5px;
+  box-shadow: black 1px 1px 2px;
+  cursor: pointer;
+}
