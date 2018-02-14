@@ -7,7 +7,7 @@ const responseContainer = document.getElementById('response-container');
 let searchForText = null;
 
 const XHR = ((window, document) => {
-  const addNews = function () {
+  const addNews = function() {
     const data = JSON.parse(this.responseText);
 
     console.log(data);
@@ -22,11 +22,11 @@ const XHR = ((window, document) => {
     li.innerText = snippet;
 
     responseContainer.appendChild(li);
-  }
+  };
 
   const handleError = () => {
     console.error('Se ha presentado un error!!');
-  }
+  };
 
   const getNews = str => {
     const articleRequest = new XMLHttpRequest();
@@ -38,7 +38,7 @@ const XHR = ((window, document) => {
     console.log(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${str}&api-key=15c0308eb388472089bea2e37e7b0cbc`);
 
     articleRequest.send();
-  }
+  };
 
   return {
     getNews: getNews
@@ -59,11 +59,11 @@ const FETCH = ((document, window) => {
     li.innerText = snippet;
 
     responseContainer.appendChild(li);
-  }
+  };
 
   const handleError = () => {
     console.error('Se ha presentado un error!!');
-  }
+  };
 
   const getNews = str => {
     if (self.fetch) {
@@ -76,28 +76,28 @@ const FETCH = ((document, window) => {
     } else {
       // ¿hacer algo con XMLHttpRequest?
     }
-  }
+  };
 
   return {
     getNews: getNews
-  }
+  };
 })(document, window);
 
 const preventClear = event => {
   event.preventDefault();
 
   responseContainer.innerText = '';
-}
+};
 
 const searchXHR = event => {
   preventClear(event);
   XHR.getNews(searchField.value);
-}
+};
 
 const searchFetch = event => {
   preventClear(event);
   FETCH.getNews(searchField.value);
-}
+};
 
 sendXHR.addEventListener('click', searchXHR);
 sendFetch.addEventListener('click', searchFetch);
