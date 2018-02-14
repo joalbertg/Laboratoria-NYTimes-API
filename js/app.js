@@ -19,11 +19,11 @@ const addNews = function() {
   li.innerText = snippet;
 
   responseContainer.appendChild(li);
-}
+};
 
 const handleError = () => {
   console.error('Se ha presentado un error!!');
-}
+};
 
 const getNews = () => {
   const articleRequest = new XMLHttpRequest();
@@ -33,7 +33,7 @@ const getNews = () => {
   articleRequest.onerror = handleError;
   console.log(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${ searchForText }&api-key=15c0308eb388472089bea2e37e7b0cbc`);
   articleRequest.send();
-}
+};
 
 const search = event => {
   event.preventDefault();
@@ -42,7 +42,7 @@ const search = event => {
   searchForText = searchField.value;
 
   getNews();
-}
+};
 
 form.addEventListener('submit', search);
 searchField.focus();
