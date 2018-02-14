@@ -9,16 +9,19 @@ const addNews = function() {
 
   console.log(data);
 
-  const article = data.response.docs[0];
-  const title = article.headline.main;
-  const snippet = article.snippet;
+  const articles = data.response.docs;
 
-  let li = document.createElement('li');
+  articles.forEach(article => {
+    const title = article.headline.main;
+    const snippet = article.snippet;
 
-  li.className = 'articleClass';
-  li.innerText = snippet;
+    let li = document.createElement('li');
 
-  responseContainer.appendChild(li);
+    li.className = 'articleClass';
+    li.innerHTML = snippet;
+
+    responseContainer.appendChild(li);
+  });
 };
 
 const handleError = () => {
@@ -28,10 +31,10 @@ const handleError = () => {
 const getNews = () => {
   const articleRequest = new XMLHttpRequest();
 
-  articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${ searchForText }&api-key=15c0308eb388472089bea2e37e7b0cbc`);
+  articleRequest.open('GET', `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchForText}&api-key=15c0308eb388472089bea2e37e7b0cbc`);
   articleRequest.onload = addNews;
   articleRequest.onerror = handleError;
-  console.log(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${ searchForText }&api-key=15c0308eb388472089bea2e37e7b0cbc`);
+  console.log(`http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${searchForText}&api-key=15c0308eb388472089bea2e37e7b0cbc`);
   articleRequest.send();
 };
 
