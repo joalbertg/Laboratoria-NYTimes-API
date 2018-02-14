@@ -17,11 +17,11 @@ const addNews = data => {
   $li.text(snippet);
 
   $responseContainer.append($li);
-}
+};
 
 const handleError = () => {
   console.error('Se ha presentado un error!!');
-}
+};
 
 const getNews = () => {
   const articleRequest = new XMLHttpRequest();
@@ -29,7 +29,7 @@ const getNews = () => {
   $.ajax({ url: `http://api.nytimes.com/svc/search/v2/articlesearch.json?q=${ searchForText }&api-key=15c0308eb388472089bea2e37e7b0cbc` })
     .done(addNews)
     .fail(handleError);
-}
+};
 
 const search = event => {
   event.preventDefault();
@@ -38,7 +38,7 @@ const search = event => {
   searchForText = $searchField.value;
 
   getNews();
-}
+};
 
 $form.on('submit', search);
 $searchField.focus();
