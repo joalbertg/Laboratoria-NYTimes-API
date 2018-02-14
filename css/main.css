@@ -25,7 +25,7 @@
   margin: 20px;
 }
 
-#submit-btn {
+#submit-btn, #submit-fetch-btn {
   padding: 10px;
   border: 0;
   background-color: rgb(74, 119, 245);
